@@ -10,7 +10,9 @@
     <h1>Gestión de Liga de Básquetbol</h1>
 
     @if (session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
+        <p style="color: green;">
+            {{ session('success') }}
+        </p>
     @endif
 
     <a href="{{ route('equipos.create') }}">Registrar equipo</a>
@@ -26,14 +28,36 @@
                     <th>Nombre</th>
                     <th>Ciudad</th>
                     <th>Entrenador</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach ($equipos as $equipo)
                     <tr>
                         <td>{{ $equipo->nombre }}</td>
                         <td>{{ $equipo->ciudad }}</td>
                         <td>{{ $equipo->entrenador ?? 'Sin asignar' }}</td>
+
+                        <td>
+                            <a href="{{ route('equipos.edit', $equipo) }}">
+                                Editar
+                            </a>
+
+                            <form
+                                action="{{ route('equipos.destroy', $equipo) }}"
+                                method="POST"
+                                style="display: inline;"
+                                onsubmit="return confirm('¿Seguro que deseas eliminar este equipo?');"
+                            >
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
