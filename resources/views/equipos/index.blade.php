@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +14,11 @@
         </p>
     @endif
 
-    <a href="{{ route('equipos.create') }}">Registrar equipo</a>
+    <div>
+        <a href="{{ route('equipos.create') }}">Registrar equipo</a>
+        |
+        <a href="{{ route('jugadores.index') }}">Ver jugadores</a>
+    </div>
 
     <h2>Lista de equipos</h2>
 
@@ -53,9 +56,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit">
-                                    Eliminar
-                                </button>
+                                <button type="submit">Eliminar</button>
                             </form>
                         </td>
                     </tr>
