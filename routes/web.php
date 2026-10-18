@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\JugadorController;
 
 Route::get('/', function () {
     return redirect()->route('equipos.index');
@@ -9,3 +10,7 @@ Route::get('/', function () {
 
 Route::resource('equipos', EquipoController::class)
     ->except(['show']);
+
+Route::resource('jugadores', JugadorController::class)
+    ->except(['show'])
+    ->parameters(['jugadores' => 'jugador']);

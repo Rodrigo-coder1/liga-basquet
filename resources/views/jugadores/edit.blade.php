@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar jugador</title>
+</head>
+<body>
+    <h1>Editar jugador de básquetbol</h1>
+
+    @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('jugadores.update', $jugador) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value="{{ old('nombre', $jugador->nombre) }}"
+                maxlength="100"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="apellidos">Apellidos:</label>
+            <input
+                type="text"
+                id="apellidos"
+                name="apellidos"
+                value="{{ old('apellidos', $jugador->apellidos) }}"
+                maxlength="100"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="numero_camiseta">Número de camiseta:</label>
+            <input
+                type="number"
+                id="numero_camiseta"
+                name="numero_camiseta"
+                value="{{ old('numero_camiseta', $jugador->numero_camiseta) }}"
+                min="0"
+                max="99"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="posicion">Posición:</label>
+            <select id="posicion" name="posicion">
+                <option value="">Seleccionar posición</option>
+
+                @foreach ([
+                    'Base',
+                    'Escolta',
+                    'Alero',
+                    'Ala-pívot',
+                    'Pívot'
+                ] as $posicion)
+                    <option
+                        value="{{ $posicion }}"
+                        {{ old('posicion', $jugador->posicion) == $posicion ? 'selected' : '' }}
+                    >
+                        {{ $posicion }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="equipo_id">Equipo:</label>
+            <select id="equipo_id" name="equipo_id" required>
+                <option value="">Seleccionar equipo</option>
+
+                @foreach ($equipos as $equipo)
+                    <option
+                        value="{{ $equipo->id }}"
+                        {{ old('equipo_id', $jugador->equipo_id) == $equipo->id ? 'selected' : '' }}
+                    >
+                        {{ $equipo->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <br>
+
+        <button type="submit">Guardar cambios</button>
+        <a href="{{ route('jugadores.index') }}">Cancelar</a>
+    </form>
+</body>
+</html>
