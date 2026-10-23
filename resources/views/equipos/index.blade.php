@@ -15,11 +15,12 @@
     @endif
 
     <div>
-        <a href="{{ route('equipos.create') }}">Registrar equipo</a>
-        |
-        <a href="{{ route('jugadores.index') }}">Ver jugadores</a>
-    </div>
-
+    <a href="{{ route('equipos.create') }}">Registrar equipo</a>
+    |
+    <a href="{{ route('jugadores.index') }}">Ver jugadores</a>
+    |
+    <a href="{{ route('partidos.index') }}">Gestionar partidos</a>
+</div>
     <h2>Lista de equipos</h2>
 
     @if ($equipos->isEmpty())
