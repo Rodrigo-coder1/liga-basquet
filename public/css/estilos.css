@@ -1,0 +1,812 @@
+/* ==========================================
+   RESTAURAR PANEL DEL USUARIO ACTIVO
+   ========================================== */
+
+body > div.panel-usuario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    min-height: 110px;
+    margin: 20px 0 28px;
+    padding: 20px 24px;
+
+    border: 2px solid #45476f;
+    border-left: 7px solid #ff7518;
+    border-radius: 20px;
+
+    color: #f6f7ff;
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(255, 117, 24, 0.14),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #171a32,
+            #292047,
+            #192c43
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.30),
+        0 0 18px rgba(130, 85, 255, 0.15);
+
+    animation: entradaAnime 0.45s ease-out;
+}
+
+body > div.panel-usuario .usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+body > div.panel-usuario .usuario-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+
+    border: 3px solid #ffc16a;
+    border-radius: 50%;
+
+    color: #26152b;
+    background: linear-gradient(135deg, #ffc45e, #ff7518);
+
+    font-size: 30px;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 117, 24, 0.10),
+        0 0 22px rgba(255, 117, 24, 0.28);
+
+    animation: balonAnime 7s ease-in-out infinite;
+}
+
+body > div.panel-usuario .usuario-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.5;
+}
+
+body > div.panel-usuario .usuario-texto small {
+    color: #48e7ff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+body > div.panel-usuario .usuario-texto strong {
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+body > div.panel-usuario .usuario-texto span {
+    color: #bdc5e5;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* EVITAR QUE EL FORMULARIO GLOBAL BORRE EL MARCO DEL PANEL */
+
+body > div.panel-usuario form.form-logout {
+    display: block;
+    flex: 0 0 auto;
+
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+
+    animation: none;
+}
+
+/* BOTON GRANDE DE CERRAR SESION */
+
+body > div.panel-usuario form.form-logout button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 220px;
+    min-height: 60px;
+    margin: 0;
+    padding: 15px 24px;
+
+    border: 2px solid #ff9cb5;
+    border-radius: 15px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff477e, #b91f50);
+
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 6px 0 #781f3c,
+        0 0 18px rgba(255, 71, 126, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body > div.panel-usuario form.form-logout button:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff6594, #d72d61);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 9px 0 #781f3c,
+        0 0 28px rgba(255, 71, 126, 0.35);
+}
+
+body > div.panel-usuario form.form-logout button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #781f3c;
+}
+
+/* ADAPTACION A CELULARES */
+
+@media (max-width: 600px) {
+    body > div.panel-usuario {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    body > div.panel-usuario form.form-logout {
+        width: 100%;
+    }
+
+    body > div.panel-usuario form.form-logout button {
+        width: 100%;
+        min-width: 0;
+    }
+}
+/* ============================================
+   RESTAURACION DEL ESTILO BASKET ANIME
+   No modifica el panel del usuario activo
+   ============================================ */
+
+:root {
+    --anime-fondo: #101225;
+    --anime-card: #191c35;
+    --anime-naranja: #ff7518;
+    --anime-dorado: #ffc45e;
+    --anime-morado: #8255ff;
+    --anime-cyan: #48e7ff;
+    --anime-rosa: #ff477e;
+    --anime-texto: #f6f7ff;
+    --anime-borde: #393e60;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--anime-texto);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(130, 85, 255, 0.19),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(255, 117, 24, 0.15),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 70% 90%,
+            rgba(72, 231, 255, 0.08),
+            transparent 30%
+        ),
+        var(--anime-fondo);
+    background-attachment: fixed;
+    font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+}
+
+/* TITULOS CON ENERGIA ANIME */
+
+h1 {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 30px 125px 30px 30px;
+    border: 1px solid #45476f;
+    border-left: 7px solid var(--anime-naranja);
+    border-radius: 20px;
+    color: #fff;
+    background: linear-gradient(
+        115deg,
+        #17182e,
+        #302057,
+        #873d2a
+    );
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.3),
+        0 0 24px rgba(130, 85, 255, 0.15);
+    animation: animeEntradaSegura 0.6s ease-out;
+}
+
+h1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        125deg,
+        transparent 0 55px,
+        rgba(255, 255, 255, 0.055) 56px 59px,
+        transparent 60px 110px
+    );
+    animation: animeVelocidadSegura 16s linear infinite;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    width: 76px;
+    height: 76px;
+    border: 4px solid #321b29;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 46%,
+            #321b29 47% 51%,
+            transparent 52%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 46%,
+            #321b29 47% 51%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd58b,
+            #ff9a30 40%,
+            #d94d0b
+        );
+    box-shadow: 0 0 22px rgba(255, 117, 24, 0.3);
+    transform: translateY(-50%);
+    animation: animeBalonSeguro 7s ease-in-out infinite;
+}
+
+h2 {
+    color: #fff;
+    font-weight: 900;
+}
+
+h2::before {
+    content: "◆ ";
+    color: var(--anime-naranja);
+}
+
+/* ENLACES DE NAVEGACION, SIN ALTERAR EL PANEL DE USUARIO */
+
+body > div:not(.panel-usuario):not(.resumen):not(.tarjeta) {
+    color: var(--anime-texto);
+}
+
+a {
+    border-radius: 11px;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body a:not(.usuario-texto a) {
+    font-weight: 750;
+}
+
+a:hover {
+    transform: translateY(-2px);
+}
+
+/* FORMULARIOS: REGISTRO, EDICION Y LOGIN
+   Excluimos expresamente el formulario de salida */
+
+form:not(.form-logout):not([style*="display: inline"]) {
+    color: var(--anime-texto);
+    border: 1px solid var(--anime-borde);
+    border-top: 3px solid var(--anime-morado);
+    border-radius: 19px;
+    background: linear-gradient(
+        145deg,
+        #202440,
+        #171a31
+    );
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.26);
+    animation: animeEntradaSegura 0.5s ease-out;
+}
+
+label {
+    color: #e7e8ff;
+    font-weight: 800;
+}
+
+input:not([type="hidden"]),
+select,
+textarea {
+    color: #fff;
+    border: 1px solid #444969;
+    border-radius: 10px;
+    background: #111429;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #929aba;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--anime-cyan);
+    box-shadow: 0 0 0 4px rgba(72, 231, 255, 0.12);
+}
+
+select option {
+    color: #fff;
+    background: #191c35;
+}
+
+/* BOTONES GENERALES
+   El selector específico del botón de salida conserva prioridad */
+
+button {
+    border-radius: 11px;
+    font-weight: 900;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+form[onsubmit]:not(.form-logout) button {
+    color: #fff;
+    background: linear-gradient(130deg, #ff477e, #bd2852);
+    border-color: #ff7894;
+}
+
+/* TABLAS DE TODA LA LIGA */
+
+table {
+    width: 100%;
+    color: var(--anime-texto);
+    border: 1px solid var(--anime-borde) !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 16px;
+    background: var(--anime-card);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+    animation: animeEntradaSegura 0.5s ease-out;
+}
+
+thead th {
+    padding: 14px 12px;
+    border: none !important;
+    color: #fff;
+    background: linear-gradient(
+        110deg,
+        #252447,
+        #4932a0,
+        #713c8b
+    );
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px;
+    color: #e9ebff;
+    border: none !important;
+    border-bottom: 1px solid #343854 !important;
+}
+
+tbody tr {
+    background: #191c35;
+}
+
+tbody tr:nth-child(even) {
+    background: #1d203b;
+}
+
+tbody tr:hover td {
+    background: #2b2c51;
+}
+
+/* ESTADOS DE PARTIDOS */
+
+tbody tr.pendiente td {
+    color: #d3ffe5;
+    background: #143a33;
+    border-bottom-color: #28664f !important;
+}
+
+tbody tr.pendiente:hover td {
+    background: #1c5142;
+}
+
+tbody tr.finalizado td {
+    color: #ffe0e7;
+    background: #482232;
+    border-bottom-color: #79354c !important;
+}
+
+tbody tr.finalizado:hover td {
+    background: #613047;
+}
+
+/* TARJETAS DE ESTADISTICAS */
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(190px, 1fr)
+    );
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.resumen .tarjeta {
+    position: relative;
+    overflow: hidden;
+    padding: 22px;
+    border: 1px solid #3b4165;
+    border-top: 3px solid var(--anime-naranja);
+    border-radius: 18px;
+    background: linear-gradient(
+        145deg,
+        #232744,
+        #171a31
+    );
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    animation: animeEntradaSegura 0.55s ease-out;
+}
+
+.resumen .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.27),
+        0 0 20px rgba(255, 117, 24, 0.12);
+}
+
+.resumen .tarjeta h3 {
+    color: #c8ccec;
+    font-size: 0.95rem;
+    font-weight: 850;
+}
+
+.resumen .tarjeta strong {
+    color: var(--anime-dorado);
+    font-size: 2.4rem;
+    font-weight: 950;
+    text-shadow: 0 0 18px rgba(255, 117, 24, 0.15);
+}
+
+/* MENSAJES */
+
+body div[style*="color: red"] {
+    color: #ffdce5 !important;
+    border: 1px solid #a9405d;
+    border-left: 5px solid var(--anime-rosa);
+    border-radius: 12px;
+    background: #411d30;
+}
+
+/* ANIMACIONES CON NOMBRES PROPIOS PARA NO COLISIONAR */
+
+@keyframes animeEntradaSegura {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animeBalonSeguro {
+    0%, 100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 7px)) rotate(10deg);
+    }
+}
+
+@keyframes animeVelocidadSegura {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 300px 0;
+    }
+}
+
+/* ADAPTACION A MOVILES */
+
+@media (max-width: 760px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        padding: 24px 90px 24px 18px;
+        font-size: 1.45rem;
+    }
+
+    h1::after {
+        right: 12px;
+        width: 58px;
+        height: 58px;
+    }
+
+    form:not(.form-logout):not([style*="display: inline"]) {
+        padding: 19px;
+    }
+
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* ==========================================
+   AJUSTE FINAL: DISEÑO CENTRADO Y PROFESIONAL
+   Conserva el estilo anime y el panel de usuario
+   ========================================== */
+
+/* CONTENEDOR PRINCIPAL */
+body {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 24px 45px;
+    box-sizing: border-box;
+}
+
+/* TITULO PRINCIPAL CENTRADO */
+body > h1 {
+    padding: 27px 110px;
+    text-align: center;
+    line-height: 1.35;
+    border-radius: 16px;
+    margin-bottom: 26px;
+}
+
+/* EL BALON CONSERVA SU POSICION */
+body > h1::after {
+    right: 24px;
+}
+
+/* BARRA DE NAVEGACION ALINEADA */
+body > div:not(.panel-usuario):not(.resumen) {
+    max-width: 100%;
+}
+
+/* SOLO CENTRAR EL BLOQUE DE NAVEGACION */
+body > div:not(.panel-usuario):not(.resumen) a {
+    margin: 3px 4px;
+}
+
+/* ESPACIOS ENTRE SECCIONES */
+h2 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(130, 85, 255, 0.25);
+}
+
+/* FORMULARIOS CENTRADOS Y CON ANCHO CONTROLADO */
+body form:not(.form-logout):not([style*="display: inline"]) {
+    width: 100%;
+    max-width: 720px;
+    margin: 24px auto;
+    padding: 28px 30px;
+    border-radius: 16px;
+}
+
+/* ESPACIO UNIFORME ENTRE LOS CAMPOS */
+body form:not(.form-logout):not([style*="display: inline"]) > div {
+    margin-bottom: 15px;
+}
+
+/* ETIQUETAS MÁS CLARAS */
+label {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* CAMPOS ALINEADOS */
+body form:not(.form-logout):not([style*="display: inline"])
+input:not([type="hidden"]),
+body form:not(.form-logout):not([style*="display: inline"]) select,
+body form:not(.form-logout):not([style*="display: inline"]) textarea {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 3px;
+}
+
+/* BOTONES DEL FORMULARIO */
+body form:not(.form-logout):not([style*="display: inline"]) > button {
+    margin-top: 12px;
+}
+
+/* TABLAS: MISMO ANCHO Y COLUMNAS ORDENADAS */
+body > table,
+body table {
+    width: 100%;
+    margin: 22px auto 30px;
+    border-radius: 14px;
+    table-layout: auto;
+}
+
+/* EVITAR CELDAS DEMASIADO APRETADAS */
+body table th,
+body table td {
+    padding: 13px 15px;
+    line-height: 1.55;
+}
+
+/* TITULOS DE COLUMNA */
+body table th {
+    text-align: center;
+}
+
+/* TEXTO DE LAS TABLAS */
+body table td {
+    vertical-align: middle;
+}
+
+/* ACCIONES ORDENADAS EN LA TABLA */
+body table td a,
+body table td form[style*="display: inline"] button {
+    margin: 3px;
+}
+
+/* TARJETAS DE ESTADISTICAS EQUILIBRADAS */
+body .resumen {
+    width: 100%;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(190px, 1fr)
+    );
+    gap: 18px;
+    margin: 24px auto 32px;
+}
+
+body .resumen .tarjeta {
+    min-width: 0;
+    padding: 23px;
+    border-radius: 16px;
+}
+
+/* PANEL DEL USUARIO: CONSERVAR MARCO Y ESTILO */
+body > div.panel-usuario {
+    width: 100%;
+    margin: 0 auto 25px;
+    box-sizing: border-box;
+    border-radius: 17px;
+}
+
+/* MENSAJES ALINEADOS CON EL CONTENIDO */
+body > p[style*="color: green"] {
+    margin: 18px 0;
+    padding: 13px 17px;
+}
+
+/* ENLACES GENERALES CON ESPACIADO REGULAR */
+body > a {
+    margin: 4px 4px 8px 0;
+}
+
+/* DISPOSITIVOS MEDIANOS */
+@media (max-width: 800px) {
+    body {
+        max-width: 100%;
+        padding: 22px 18px 35px;
+    }
+
+    body > h1 {
+        padding: 24px 85px;
+        font-size: 1.5rem;
+    }
+
+    body form:not(.form-logout):not([style*="display: inline"]) {
+        max-width: 100%;
+        padding: 23px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 520px) {
+    body {
+        padding: 15px 12px 28px;
+    }
+
+    body > h1 {
+        padding: 22px 70px 22px 16px;
+        text-align: left;
+        font-size: 1.3rem;
+    }
+
+    body > h1::after {
+        right: 10px;
+        width: 48px;
+        height: 48px;
+    }
+
+    body form:not(.form-logout):not([style*="display: inline"]) {
+        padding: 18px;
+    }
+
+    body table {
+        font-size: 13px;
+    }
+
+    body table th,
+    body table td {
+        padding: 10px;
+    }
+
+    body > div.panel-usuario {
+        padding: 17px;
+        gap: 14px;
+    }
+}

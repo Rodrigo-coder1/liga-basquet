@@ -54,8 +54,25 @@
             background: #f8f8f8;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body>
+    <div class="panel-usuario">
+        <div class="usuario-info">
+            <span class="usuario-icono">🏀</span>
+
+            <div class="usuario-texto">
+                <small>USUARIO ACTIVO</small>
+                <strong>{{ auth()->user()->name }}</strong>
+                <span>{{ auth()->user()->email }}</span>
+            </div>
+        </div>
+
+        <form action="{{ route('logout') }}" method="POST" class="form-logout">
+            @csrf
+            <button type="submit">🚪 Cerrar sesión</button>
+        </form>
+    </div>
     <h1>Estadísticas de la Liga de Básquetbol</h1>
 
     <p>
