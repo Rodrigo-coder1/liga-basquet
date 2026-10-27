@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jugadores de Básquetbol</title>
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body>
+    <div class="panel-usuario">
+        <div class="usuario-info">
+            <span class="usuario-icono">🏀</span>
+
+            <div class="usuario-texto">
+                <small>USUARIO ACTIVO</small>
+                <strong>{{ auth()->user()->name }}</strong>
+                <span>{{ auth()->user()->email }}</span>
+            </div>
+        </div>
+
+        <form action="{{ route('logout') }}" method="POST" class="form-logout">
+            @csrf
+            <button type="submit">🚪 Cerrar sesión</button>
+        </form>
+    </div>
     <h1>Gestión de Jugadores</h1>
 
     @if (session('success'))
