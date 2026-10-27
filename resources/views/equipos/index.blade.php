@@ -20,6 +20,8 @@
     <a href="{{ route('jugadores.index') }}">Ver jugadores</a>
     |
     <a href="{{ route('partidos.index') }}">Gestionar partidos</a>
+    |
+    <a href="{{ route('estadisticas.index') }}">Estadísticas</a>
 </div>
     <h2>Lista de equipos</h2>
 
